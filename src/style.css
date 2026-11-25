@@ -249,7 +249,7 @@ ul {
 .hero__title {
   font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(48px, 12.5vw, 240px);
+  font-size: clamp(40px, 10.8vw, 220px);
   line-height: 0.86;
   white-space: nowrap;
   letter-spacing: -0.045em;
@@ -710,7 +710,7 @@ ul {
     padding-left: 0;
   }
   .hero__title {
-    font-size: 14.5vw;
+    font-size: 12vw;
   }
   .stats {
     grid-template-columns: 1fr;

@@ -1,8 +1,8 @@
 // All site copy lives here. Edit this file to make the portfolio yours.
 
 export const profile = {
-  firstName: 'Egor',
-  lastName: 'Kazabey',
+  firstName: 'Yehor',
+  lastName: 'Havrylov',
   role: 'Creative Developer',
   location: 'Remote · Worldwide',
   timezone: 'Europe/Moscow',
