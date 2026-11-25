@@ -5,6 +5,7 @@ import Lenis from 'lenis'
 import { profile } from './content'
 import { template } from './template'
 import { startShader } from './shader'
+import { createParticles } from './particles'
 import { initCursor, initMagnetic } from './cursor'
 import { initScrollMotion, introHero, playLoader } from './motion'
 
@@ -17,8 +18,8 @@ gsap.ticker.add((t) => lenis.raf(t * 1000))
 gsap.ticker.lagSmoothing(0)
 lenis.stop()
 
-const canvas = document.querySelector<HTMLCanvasElement>('.hero__canvas')!
-startShader(canvas, () => Math.min(window.scrollY / window.innerHeight, 1))
+const heroScroll = () => Math.min(window.scrollY / window.innerHeight, 1)
+startShader(document.querySelector<HTMLCanvasElement>('.hero__canvas')!, heroScroll)
 
 const clock = document.querySelector<HTMLElement>('[data-clock]')!
 const fmt = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: profile.timezone })
@@ -37,8 +38,11 @@ initCursor()
 initMagnetic()
 
 await document.fonts.ready
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+const particles = reducedMotion ? null : createParticles(document.querySelector<HTMLElement>('.hero')!, heroScroll)
 initScrollMotion(lenis)
 await playLoader()
 document.body.classList.remove('is-loading')
 lenis.start()
+particles?.play()
 introHero()

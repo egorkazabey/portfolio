@@ -25,10 +25,8 @@ export function playLoader(): Promise<void> {
 }
 
 export function introHero() {
-  const chars = SplitText.create('.hero .split', { type: 'chars' }).chars
   gsap
     .timeline()
-    .from(chars, { yPercent: 110, rotate: 8, duration: 1.4, ease: 'expo.out', stagger: 0.04 })
     .from('.hero__star', { scale: 0, rotate: -180, duration: 1.2, ease: 'back.out(2)' }, 0.5)
     .from(['.hero__eyebrow', '.hero__intro', '.scroll-cue', '.nav'], { opacity: 0, y: 20, duration: 1, stagger: 0.1 }, 0.6)
   gsap.to('.hero__star', { rotate: 360, duration: 12, ease: 'none', repeat: -1 })
